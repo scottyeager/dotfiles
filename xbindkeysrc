@@ -1,0 +1,16 @@
+# Enable and disable external monitor
+"/home/scott/bin/monitorswitch"
+    XF86Display
+
+# Toggle capture mute
+# "amixer set Capture toggle"
+"/home/scott/bin/micmute.sh"
+    XF86AudioMicMute
+
+# Toggle OBS recording
+"/home/scott/codes/python/obs-remote/toggle.py"
+    XF86Favorites
+
+# Run screenshot program on PrtScn
+# "/usr/bin/deepin-screenshot"
+#    Print
