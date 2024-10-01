@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:vim
+SETUVAR GEM_HOME:/home/scott/\x2egem/
 SETUVAR --export PYENV_ROOT:/home/scott/\x2epyenv
 SETUVAR --export --path PYTHONPATH:/home/scott/codes/python/
 SETUVAR XDG_CURRENT_DESKTOP:GNOME
@@ -42,4 +43,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR --export fish_user_paths:/home/scott/threefold/bin\x1e/home/scott/go/bin\x1e/home/scott/\x2epulumi/bin\x1e/home/scott/\x2elocal/bin\x1e/home/scott/\x2ecargo/bin\x1e/home/scott/\x2epyenv/bin\x1e/home/scott/\x2egem/ruby/2\x2e3\x2e0/bin\x1e/home/scott/bin\x1e/usr/bin\x1e/usr/bin/core_perl/\x1e/snap/bin
+SETUVAR fish_user_paths:/home/scott/\x2egem/ruby/3\x2e0\x2e0/bin\x1e/home/scott/threefold/bin\x1e/home/scott/go/bin\x1e/home/scott/\x2epulumi/bin\x1e/home/scott/\x2elocal/bin\x1e/home/scott/\x2ecargo/bin\x1e/home/scott/\x2egem/bin\x1e/home/scott/bin\x1e/usr/bin/core_perl/\x1e/snap/bin\x1e/home/scott/\x2erye/shims

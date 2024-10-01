@@ -42,7 +42,7 @@ fi
 # xinput --set-prop "16" "libinput Accel Speed" .5
 
 # Scale display, at least for programs that behave
-xrander --dpi 120&
+xrandr --dpi 120&
 
 # Disabling screen blanking and power saving
 xset s 0 0
@@ -57,8 +57,9 @@ volumeicon&
 qpwgraph -m&
 # batterymon&
 redshift-gtk&
-caffeine&
+#caffeine&
 megasync&
 # xss-lock -- i3lock -n -c 000000&
 XSECURELOCK_PASSWORD_PROMPT=time_hex xss-lock -- xsecurelock&
+# nm-applet
 exec awesome
