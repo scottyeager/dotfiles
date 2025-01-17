@@ -154,6 +154,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Set the text wrapping length for gq and gw commands, which I mostly use
+-- for wrapping comments in code. At width 75, two editors fit side by side
+-- with a nice large font, but I think it's better to stick with 80 since
+-- this is pretty standard
+--vim.opt.textwidth = 75
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -342,7 +348,10 @@ require('lazy').setup({
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+
+    -- Going to the bleeding edge for buffer delete in buffer list fuctionality. Can revert after the next release
+    -- branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -603,7 +612,6 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -629,7 +637,23 @@ require('lazy').setup({
           },
         },
 
+        -- https://www.andersevenrud.net/neovim.github.io/lsp/configurations/pyright/
+        pyright = {
+          -- enabled = false,
+          settings = {
+            python = {
+              analysis = {
+                typeCheckingMode = 'off',
+                -- defaults below
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
         pylsp = {
+          enabled = false,
           settings = {
             pylsp = {
               plugins = {
@@ -643,6 +667,7 @@ require('lazy').setup({
                   },
                   maxLineLength = 100,
                 },
+                pylsp_mypy = { enabled = false },
                 flake8 = { enabled = false },
                 autopep8 = { enabled = false },
                 pyflakes = { enabled = false },
@@ -653,6 +678,7 @@ require('lazy').setup({
           },
         },
       }
+
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -712,7 +738,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
