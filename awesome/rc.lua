@@ -300,12 +300,12 @@ globalkeys = gears.table.join(
 		end
 	end, { description = "go back", group = "client" }),
 
-	-- Standard program
-	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
-	end, { description = "open a terminal", group = "launcher" }),
-	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+   	-- Standard program
+   	awful.key({ modkey }, "Return", function()
+  		awful.spawn(terminal)
+   	end, { description = "open a terminal", group = "launcher" }),
+   	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+   	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -406,7 +406,35 @@ clientkeys = gears.table.join(
 	end),
 	awful.key({ modkey, "Shift" }, "e", function(c)
 		c:relative_move(0, 0, 0, 10)
-	end)
+	end),
+
+    awful.key({ modkey, "Control", "Shift" }, "l", function(c)
+        if c.floating or nil then
+            local screen_geometry = c.screen.geometry
+            local wibar_height = c.screen.mywibox.height
+            c.floating = true
+            c:geometry({
+                x = screen_geometry.x + screen_geometry.width/2,
+                y = screen_geometry.y + wibar_height,
+                width = screen_geometry.width/2,
+                height = screen_geometry.height - wibar_height
+            })
+        end
+    end, { description = "snap to right half", group = "client" }),
+
+    awful.key({ modkey, "Control", "Shift" }, "h", function(c)
+        if c.floating or nil then
+            local screen_geometry = c.screen.geometry
+            local wibar_height = c.screen.mywibox.height
+            c.floating = true
+            c:geometry({
+                x = screen_geometry.x,
+                y = screen_geometry.y + wibar_height,
+                width = screen_geometry.width/2,
+                height = screen_geometry.height - wibar_height
+            })
+        end
+    end, { description = "snap to left half", group = "client" })
 )
 
 -- Bind all key numbers to tags.
@@ -607,4 +635,3 @@ end)
 -- Should help windows retain tags when switching screens
 screen.connect_signal("removed", awesome.restart)
 screen.connect_signal("added", awesome.restart)
-
